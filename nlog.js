@@ -45,7 +45,7 @@ var argsToList = function(args) {
 
 exports.getLogger = function(name) {
     var log = function() {
-        args = argsToList(arguments)
+        args = argsToList(arguments);
         level = args[0];
         if (typeof(level) != 'number') {
             level = exports.levels.nuke;
@@ -90,6 +90,8 @@ exports.getLogger = function(name) {
         }
     }
 }
+
+exports.log = exports.getLogger('unnamed');
 
 exports.addEmitter = function(emitter) {
     return exports.emitters.push(emitter);
