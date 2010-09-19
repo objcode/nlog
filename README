@@ -1,7 +1,7 @@
 Noded logging supporting multiple emitters.  By using the emitters chain, you can support things like sending different log lines to different endpoints.
 
->    var log = require('nlog').getLogger('logger_name');
->    log.debug('A message goes here.');
+    var log = require('nlog').getLogger('logger_name');
+    log.debug('A message goes here.');
 
 By default, debug+ messages will be emitted to stdout.  When you add the first emitter, it will take precedence, you can use this to supress messages.
 
