@@ -92,6 +92,14 @@ exports.getLogger = function(name) {
 }
 
 exports.log = exports.getLogger('unnamed');
+exports.trace = exports.log.trace;
+exports.debug = exports.log.debug;
+exports.info = exports.log.info;
+exports.warn = exports.log.warn;
+exports.error = exports.log.error;
+exports.except = exports.log.except;
+exports.crit = exports.log.crit
+exports.nuke = exports.log.nuke;
 
 exports.addEmitter = function(emitter) {
     return exports.emitters.push(emitter);
