@@ -32,14 +32,20 @@ exports.emitters = [];
             }
         )
     }
-}       
+}
+
+var argsToList = function(args) {
+    ret = []
+    for(pos = 0; pos < args.length; pos++) {
+        ret[pos] = args[pos]
+    }
+    return ret;
+}
+
 
 exports.getLogger = function(name) {
     var log = function() {
-        args = []
-        for (pos = 0; pos < arguments.length; pos++) {
-            args[pos] = arguments[pos];
-        }
+        args = argsToList(arguments)
         level = args[0];
         if (typeof(level) != 'number') {
             level = exports.levels.nuke;
@@ -51,28 +57,36 @@ exports.getLogger = function(name) {
     return {
         log: log,
         trace: function() {
-            log(exports.levels.trace, arguments);
+            args = [name, exports.levels.debug].concat(argsToList(arguments));
+            log.apply(this, args);
         },
         debug: function() {
-            log(exports.levels.debug, arguments);
+            args = [name, exports.levels.debug].concat(argsToList(arguments));
+            log.apply(this, args);
         },
         info: function() {
-            log(exports.levels.info, arguments);
+            args = [name, exports.levels.debug].concat(argsToList(arguments));
+            log.apply(this, args);
         },
         warn: function() {
-            log(exports.levels.warn, arguments);
+            args = [name, exports.levels.debug].concat(argsToList(arguments));
+            log.apply(this, args);
         },
         error: function() {
-            log(exports.levels.error, arguments);
+            args = [name, exports.levels.debug].concat(argsToList(arguments));
+            log.apply(this, args);
         },
         except: function() {
-            log(exports.levels.except, arguments);
+            args = [name, exports.levels.debug].concat(argsToList(arguments));
+            log.apply(this, args);
         },
         crit: function() {
-            log(exports.levels.crit, arguments);
+            args = [name, exports.levels.debug].concat(argsToList(arguments));
+            log.apply(this, args);
         },
         nuke: function() {
-            log(exports.levels.nuke, arguments);
+            args = [name, exports.levels.debug].concat(argsToList(arguments));
+            log.apply(this, args);
         }
     }
 }
